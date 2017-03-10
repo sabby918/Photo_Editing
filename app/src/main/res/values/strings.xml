@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">editPicture</string>
+    <string name="take_a_photo">Take a photo</string>
+    <string name="select_a_photo">Select A Photo</string>
+</resources>
