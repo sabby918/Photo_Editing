@@ -28,6 +28,8 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
+    ///////////////////////////////////////////////////////////////////////////
+
     TextView textTitle;
     ImageView image;
     SeekBar barR, barG, barB, barAlpha;
@@ -39,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String COLOR_VALUES = "ColorVals";
     private static final String PICTURE = "Picture";
 
+    ///////////////////////////////////////////////////////////////////////////
 
- // Start Up
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
         ColorValues = settings.getInt(COLOR_VALUES, ColorValues);
     }
 
+
+///////////////////////////////Menu//////////////////////////////////////////////////////
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -79,22 +85,28 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.savePicture:
                 Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-                MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "yourTitle" , "yourDescription");
-
-
+                MediaStore.Images.Media.insertImage
+                        (getContentResolver(), bitmap, "yourTitle", "yourDescription");
 
         }
         return true;
     }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////On Click Functions/////////////////////////////////////////////////////
     public void selectPicture(View view) {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
     }
+
 
     public void takePicture(View view){
 
@@ -106,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////Activity///////////////////////////////////////////////////
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -135,7 +150,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////Warning before exit///////////////////////////////////////////////
 
     @Override
     public void onBackPressed() {
@@ -156,15 +174,11 @@ public class MainActivity extends AppCompatActivity {
             TextView messageText = (TextView)dialog.findViewById(android.R.id.message);
             messageText.setGravity(Gravity.CENTER);
             dialog.show();
-
-
-
-
-
     }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 
- // Editing the Picture
+ /////////////////////////Editing the Picture//////////////////////////////////////////////////
     OnSeekBarChangeListener myOnSeekBarChangeListener = new OnSeekBarChangeListener(){
 
         @Override
@@ -193,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {}
     };
+
+///////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     protected void onSaveInstanceState(Bundle icicle) {
