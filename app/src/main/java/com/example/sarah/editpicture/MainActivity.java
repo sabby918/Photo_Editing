@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         textTitle = (TextView)findViewById(R.id.title);
         image = (ImageView)findViewById(R.id.image);
         barR = (SeekBar)findViewById(R.id.red);
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void takePicture(View view){
-
+        //PreCondition: camera must be supported and available
         try{
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
                     InputStream imageStream = null;
+                    // PreCondition: selectImage != null
                     try {
                         imageStream = getContentResolver().openInputStream(selectedImage);
                     } catch (FileNotFoundException e) {
@@ -139,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
             case CAMERA_PIC_REQUEST:
+                //PreCondition: camera is supported and available
                 try {
                     Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
                     thumbnail = Bitmap.createScaledBitmap(thumbnail, 700, 500, true);
@@ -216,4 +219,6 @@ public class MainActivity extends AppCompatActivity {
 
         icicle.putInt(COLOR_VALUES, ColorValues);
     }
+
+
 }
