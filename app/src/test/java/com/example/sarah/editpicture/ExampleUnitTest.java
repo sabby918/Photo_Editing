@@ -16,7 +16,7 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
 }
-
+// Unit test
     @Test
     public void RBG_Values() throws Exception {
         int barR=1;
