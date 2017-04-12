@@ -1,5 +1,7 @@
 package com.example.sarah.editpicture;
 
+import android.widget.SeekBar;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,5 +15,19 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+}
+
+    @Test
+    public void RBG_Values() throws Exception {
+        int barR=1;
+        int  barG=1;
+        int  barB=1;
+        int  barAlpha=1;
+        int ColorValues;
+
+        ColorValues = barAlpha+barB+barG+barR;
+        assertEquals(ColorValues, 4);
+
+
     }
 }
